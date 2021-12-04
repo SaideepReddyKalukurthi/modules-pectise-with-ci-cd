@@ -9,7 +9,7 @@ steps:
   args:
     - '-c'
     - |
-         MODULE_SEQUENCE=("vm"
+         MODULE_SEQUENCE=("deploy/vm"
                           
                          )
                          
