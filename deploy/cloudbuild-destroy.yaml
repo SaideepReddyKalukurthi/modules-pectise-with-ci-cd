@@ -1,0 +1,16 @@
+# This build can be used destroy individual terraform module. Provide module directory path e.g. /networking/nonprod in substitute variable _MODULE_DIR_PATH
+# Usage : In this directory, run the following command to build
+# $ gcloud builds submit . --config=cloudbuild-destroy.yaml --substitutions=_MODULE_DIR_PATH="<module-dir-path>"
+steps:
+- name: hashicorp/terraform:latest
+  dir: $_MODULE_DIR_PATH
+  args: ['init','-backend-config=bucket=${_BUCKET}']
+- name: hashicorp/terraform:latest
+  dir: $_MODULE_DIR_PATH
+  args: ['plan']
+- name: hashicorp/terraform:latest
+  dir: $_MODULE_DIR_PATH
+  args: ['destroy', '-auto-approve']
+substitutions:
+  _MODULE_DIR_PATH:
+  _BUCKET:

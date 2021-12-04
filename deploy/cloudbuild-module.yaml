@@ -1,0 +1,29 @@
+# This build can be used deploy individual terraform module. Provide module directory path e.g. /networking/nonprod in substitute variable _MODULE_DIR_PATH
+# Provide "Y" in substitute variable _TERRAFORM_APPLY if you want to provision module resource
+# Usage : In this directory, run the following command to build
+# $ gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH="<module-dir-path>",_TERRAFORM_APPLY="<Y> or <N>",_ORGANIZATION_ID=<org_id>,_MASTER_BILLING_ACCOUNT=<master_billing_account>,_RETAIL_BILLING_ACCOUNT="<retail_billing_account>"
+steps:
+- name: hashicorp/terraform:latest
+  dir: $_MODULE_DIR_PATH
+  args: ['init', '-backend-config=bucket=${_BUCKET}']
+- name: hashicorp/terraform:latest
+  dir: $_MODULE_DIR_PATH
+  args: ['plan', '-out=tfplan']
+- name: hashicorp/terraform:latest
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      if test "$_TERRAFORM_APPLY" = "Y" 
+      then
+        cd $_MODULE_DIR_PATH      
+        terraform apply -auto-approve tfplan
+      else
+        echo "***************************** SKIPPING APPLYING *******************************"
+        echo "Skipping terraform apply. Please review terraform plan."
+        echo "*******************************************************************************"
+      fi
+substitutions:
+  _MODULE_DIR_PATH:
+  _TERRAFORM_APPLY: 'N'
+  _BUCKET:

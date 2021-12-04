@@ -1,0 +1,23 @@
+
+#This build can be used deploy all modules sequentially as given below in MODULE_SEQUENCE 
+#Usage : In this directory, run the following command to build
+#$ gcloud builds submit . --config=cloudbuild-master.yaml
+steps:
+- id: 'module_builder'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: "bash"
+  args:
+    - '-c'
+    - |
+         MODULE_SEQUENCE=("vm"
+                          
+                         )
+                         
+         for i in "${MODULE_SEQUENCE[@]}"
+         do
+           gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH=$i,_TERRAFORM_APPLY="Y",_BUCKET="cloud-builds-data-files"
+         done
+
+
+#gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH="./service-account",_TERRAFORM_APPLY="Y",_BUCKET="terraform-gcs-backend-state"
+#gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH="./network",_TERRAFORM_APPLY="Y",_BUCKET="terraform-gcs-backend-state"
