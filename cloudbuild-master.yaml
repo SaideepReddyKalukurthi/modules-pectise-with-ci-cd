@@ -14,6 +14,7 @@ steps:
                           "deploy/network/subnets"
                           "deploy/network/cloud-router"
                           "deploy/network/cloud-nat"
+                          "deploy/compute/instance-template"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"
