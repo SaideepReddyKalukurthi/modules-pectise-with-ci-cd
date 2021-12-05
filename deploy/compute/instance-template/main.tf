@@ -6,7 +6,7 @@ module "mig1_template" {
   source     = "../../../modules/compute/instance-template"
   project_id = var.project-name
   network    = data.terraform_remote_state.network.outputs.network-name
-  subnetwork = data.google_compute_network.my-network.subnetworks_self_links[0]
+  subnetwork = data.google_compute_network.my-network.subnetworks_self_links[1]
   service_account = {
     email  = ""
     scopes = ["cloud-platform"]
@@ -25,7 +25,7 @@ module "mig2_template" {
   source     = "../../../modules/compute/instance-template"
   project_id = var.project-name
   network    = data.terraform_remote_state.network.outputs.network-name
-  subnetwork = data.google_compute_network.my-network.subnetworks_self_links[1]
+  subnetwork = data.google_compute_network.my-network.subnetworks_self_links[0]
   service_account = {
     email  = ""
     scopes = ["cloud-platform"]
