@@ -3,4 +3,10 @@ variable "project-name" {
     description = "(optional) describe your variable"
 }
 
+variable "regions" {
+    type = map(string)
+}
+
+
+
 
