@@ -14,7 +14,7 @@ module "vpc" {
     shared_vpc_host = false
 }
 
-module "vpc" {
+module "vpc-1" {
     source = "../../../modules/network"
     project_id   = var.project-name
     network_name = "${var.network-name}-001"
