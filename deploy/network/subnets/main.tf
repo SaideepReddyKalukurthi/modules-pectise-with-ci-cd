@@ -2,8 +2,8 @@ provider "google" {
     project = var.project-name
 }
 
-module "vpc-1" {
-    source = "../../../modules/network"
+module "subnets" {
+    source = "../../../modules/network/subnets"
     project_id   = var.project-name
     network_name = data.terraform_remote_state.network.outputs.network-name
 
