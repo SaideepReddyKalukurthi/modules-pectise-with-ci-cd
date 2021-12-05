@@ -9,12 +9,7 @@ steps:
   args:
     - '-c'
     - |
-         MODULE_SEQUENCE=("deploy/vm"
-                          "deploy/network/vpc"
-                          "deploy/network/subnets"
-                          "deploy/network/cloud-router"
-                          "deploy/network/cloud-nat"
-                          "deploy/compute/instance-template"
+         MODULE_SEQUENCE=("deploy/compute/instance-template"
                           "deploy/compute/managed-instance-group"
                          )
                          
