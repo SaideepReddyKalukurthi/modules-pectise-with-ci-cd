@@ -19,7 +19,7 @@ module "cloud-router-3" {
     source = "../../../modules/network/cloud-router"
     project = var.project-name
     network = data.terraform_remote_state.network.outputs.network-name
-    region = var.regions["group-2"]
+    region = var.regions["group-3"]
     name = "${data.terraform_remote_state.network.outputs.network-name}-cloud-router-3"
 }
 
