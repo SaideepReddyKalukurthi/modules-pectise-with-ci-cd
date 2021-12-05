@@ -10,6 +10,7 @@ steps:
     - |
          MODULE_SEQUENCE=("deploy/vm"
                           "deploy/network/vpc"
+                          "deploy/network/subnets"
                          )
          for ((i=${#MODULE_SEQUENCE[@]}-1; i>=0; i--)); 
          do

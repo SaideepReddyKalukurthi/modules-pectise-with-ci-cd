@@ -11,6 +11,7 @@ steps:
     - |
          MODULE_SEQUENCE=("deploy/vm"
                           "deploy/network/vpc"
+                          "deploy/network/subnets"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"
