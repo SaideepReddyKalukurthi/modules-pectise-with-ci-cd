@@ -12,6 +12,8 @@ steps:
          MODULE_SEQUENCE=("deploy/vm"
                           "deploy/network/vpc"
                           "deploy/network/subnets"
+                          "deploy/network/cloud-router"
+                          "deploy/network/cloud-nat"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"
