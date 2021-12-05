@@ -10,7 +10,7 @@ steps:
     - '-c'
     - |
          MODULE_SEQUENCE=("deploy/vm"
-                          
+                          "deploy/network/vpc"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"

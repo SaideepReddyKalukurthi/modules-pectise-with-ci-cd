@@ -9,7 +9,7 @@ steps:
     - '-c'
     - |
          MODULE_SEQUENCE=("deploy/vm"
-                          
+                          "deploy/network/vpc"
                          )
          for ((i=${#MODULE_SEQUENCE[@]}-1; i>=0; i--)); 
          do
