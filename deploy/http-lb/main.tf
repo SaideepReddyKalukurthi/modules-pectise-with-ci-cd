@@ -1,6 +1,6 @@
 
 provider "google" {
-  
+  project = var.project-name
 }
 
 
@@ -296,6 +296,7 @@ resource "google_compute_backend_bucket" "assets" {
 }
 
 resource "google_storage_bucket" "assets" {
+    project = var.project-name
   name     = random_id.assets-bucket.hex
   location = "US"
 
