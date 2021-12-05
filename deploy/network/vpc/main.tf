@@ -21,6 +21,10 @@
     
 # }
 
+provider "google" {
+    project = var.project-name  
+}
+
 module "vpc" {
     source = "../../../modules/network/vpc"
    # version = "~> 2.0.0"
