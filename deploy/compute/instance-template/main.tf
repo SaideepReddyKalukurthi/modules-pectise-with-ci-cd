@@ -1,9 +1,10 @@
 provider "google" {
-  
+  project = var.project-name
 }
 
 module "mig1_template" {
   source     = "../../../modules/compute/instance-template"
+  project_id = var.project-name
   network    = data.terraform_remote_state.network.outputs.network-name
   subnetwork = data.google_compute_network.my-network.subnetworks_self_links[0]
   service_account = {
@@ -22,6 +23,7 @@ module "mig1_template" {
 
 module "mig2_template" {
   source     = "../../../modules/compute/instance-template"
+  project_id = var.project-name
   network    = data.terraform_remote_state.network.outputs.network-name
   subnetwork = data.google_compute_network.my-network.subnetworks_self_links[1]
   service_account = {
@@ -41,6 +43,7 @@ module "mig2_template" {
 
 module "mig3_template" {
   source     = "../../../modules/compute/instance-template"
+  project_id = var.project-name
   network    = data.terraform_remote_state.network.outputs.network-name
   subnetwork = data.google_compute_network.my-network.subnetworks_self_links[2]
   service_account = {
