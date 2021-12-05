@@ -11,6 +11,7 @@ steps:
     - |
          MODULE_SEQUENCE=("deploy/compute/instance-template"
                           "deploy/compute/managed-instance-group"
+                          "deploy/http-lb"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"

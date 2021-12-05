@@ -15,6 +15,7 @@ steps:
                           "deploy/network/cloud-nat"
                           "deploy/compute/instance-template"
                           "deploy/compute/managed-instance-group"
+                          "deploy/http-lb"
                          )
          for ((i=${#MODULE_SEQUENCE[@]}-1; i>=0; i--)); 
          do
