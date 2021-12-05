@@ -6,10 +6,10 @@ output "mig1-instance-group" {
     value = module.mig1.instance_group
 }
 
-output "mig1-instance-group" {
+output "mig2-instance-group" {
     value = module.mig2.instance_group
 }
   
-output "mig1-instance-group" {
+output "mig3-instance-group" {
     value = module.mig3.instance_group
 }
