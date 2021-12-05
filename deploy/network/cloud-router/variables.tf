@@ -8,6 +8,3 @@ variable "regions" {
 }
 
 
-
-
-
