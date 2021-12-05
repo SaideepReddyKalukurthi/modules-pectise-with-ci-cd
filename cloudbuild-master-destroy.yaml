@@ -13,7 +13,7 @@ steps:
                          )
          for ((i=${#MODULE_SEQUENCE[@]}-1; i>=0; i--)); 
          do
-           gcloud builds submit . --config=cloudbuild-destroy.yaml --substitutions=_MODULE_DIR_PATH="${MODULE_SEQUENCE[i]}",_BUCKET="cloud-builds-data-files"
+           gcloud builds submit . --config=cloudbuild-destroy.yaml --substitutions=_MODULE_DIR_PATH="${MODULE_SEQUENCE[i]}",_BUCKET="terraform-remote-state-data"
          done
 
 

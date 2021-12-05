@@ -15,7 +15,7 @@ steps:
                          
          for i in "${MODULE_SEQUENCE[@]}"
          do
-           gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH=$i,_TERRAFORM_APPLY="Y",_BUCKET="cloud-builds-data-files"
+           gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH=$i,_TERRAFORM_APPLY="Y",_BUCKET="terraform-remote-state-data"
          done
 
 
