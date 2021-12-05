@@ -7,7 +7,6 @@ module "subnets" {
     project_id   = var.project-name
     network_name = data.terraform_remote_state.network.outputs.network-name
 
-
     subnets = [
         {
             subnet_name           = "group-01"
