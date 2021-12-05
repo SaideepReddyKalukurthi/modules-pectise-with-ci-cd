@@ -44,5 +44,5 @@ module "mig3" {
     port = 80
   }]
   network    = data.terraform_remote_state.network.outputs.network-link
-  subnetwork = data.google_compute_network.my-network.subnetworks_self_links[0]
+  subnetwork = data.google_compute_network.my-network.subnetworks_self_links[2]
 }
