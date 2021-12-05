@@ -238,3 +238,83 @@ module "gce-lb-https" {
     }
   }
 }
+
+
+resource "google_compute_url_map" "ml-bkd-ml-mig-bckt-s-lb" {
+  // note that this is the name of the load balancer
+  name            = data.terraform_remote_state.network.outputs.network-name
+  default_service = module.gce-lb-https.backend_services["default"].self_link
+
+  host_rule {
+    hosts        = ["*"]
+    path_matcher = "allpaths"
+  }
+
+  path_matcher {
+    name            = "allpaths"
+    default_service = module.gce-lb-https.backend_services["default"].self_link
+
+    path_rule {
+      paths = [
+        "/group1",
+        "/group1/*"
+      ]
+      service = module.gce-lb-https.backend_services["mig1"].self_link
+    }
+
+    path_rule {
+      paths = [
+        "/group2",
+        "/group2/*"
+      ]
+      service = module.gce-lb-https.backend_services["mig2"].self_link
+    }
+
+    path_rule {
+      paths = [
+        "/group3",
+        "/group3/*"
+      ]
+      service = module.gce-lb-https.backend_services["mig3"].self_link
+    }
+
+    path_rule {
+      paths = [
+        "/assets",
+        "/assets/*"
+      ]
+      service = google_compute_backend_bucket.assets.self_link
+    }
+  }
+}
+
+resource "google_compute_backend_bucket" "assets" {
+  name        = random_id.assets-bucket.hex
+  description = "Contains static resources for example app"
+  bucket_name = google_storage_bucket.assets.name
+  enable_cdn  = true
+}
+
+resource "google_storage_bucket" "assets" {
+  name     = random_id.assets-bucket.hex
+  location = "US"
+
+  // delete bucket and contents on destroy.
+  force_destroy = true
+}
+
+// The image object in Cloud Storage.
+// Note that the path in the bucket matches the paths in the url map path rule above.
+resource "google_storage_bucket_object" "image" {
+  name         = "assets/gcp-logo.svg"
+  content      = file("gcp-logo.svg")
+  content_type = "image/svg+xml"
+  bucket       = google_storage_bucket.assets.name
+}
+
+// Make object public readable.
+resource "google_storage_object_acl" "image-acl" {
+  bucket         = google_storage_bucket.assets.name
+  object         = google_storage_bucket_object.image.name
+  predefined_acl = "publicRead"
+}
