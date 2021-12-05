@@ -64,7 +64,7 @@ module "gce-lb-https" {
       }
       groups = [
         {
-          group                        = data.terraform_remote_state.mig.mig1-instance-group
+          group                        = "https://www.googleapis.com/compute/v1/projects/terraform-practise-003/regions/us-west1/instanceGroups/sai-group1-mig"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
@@ -77,7 +77,7 @@ module "gce-lb-https" {
           max_utilization              = null
         },
         {
-          group                        = data.terraform_remote_state.mig.mig2-instance-group
+          group                        = "https://www.googleapis.com/compute/v1/projects/terraform-practise-003/regions/us-central1/instanceGroups/sai-group2-mig"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
@@ -90,7 +90,7 @@ module "gce-lb-https" {
           max_utilization              = null
         },
         {
-          group                        = data.terraform_remote_state.mig.mig3-instance-group
+          group                        = "https://www.googleapis.com/compute/v1/projects/terraform-practise-003/regions/us-east1/instanceGroups/sai-group3-mig"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
@@ -132,7 +132,7 @@ module "gce-lb-https" {
       }
       groups = [
         {
-          group                        = data.terraform_remote_state.mig.mig1-instance-group
+          group                        = "https://www.googleapis.com/compute/v1/projects/terraform-practise-003/regions/us-west1/instanceGroups/sai-group1-mig"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
@@ -174,7 +174,7 @@ module "gce-lb-https" {
       }
       groups = [
         {
-          group                        = data.terraform_remote_state.mig.mig2-instance-group
+          group                        = "https://www.googleapis.com/compute/v1/projects/terraform-practise-003/regions/us-central1/instanceGroups/sai-group2-mig"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
@@ -216,7 +216,7 @@ module "gce-lb-https" {
       }
       groups = [
         {
-          group                        = data.terraform_remote_state.mig.mig3-instance-group
+          group                        = "https://www.googleapis.com/compute/v1/projects/terraform-practise-003/regions/us-east1/instanceGroups/sai-group3-mig"
           balancing_mode               = null
           capacity_scaler              = null
           description                  = null
