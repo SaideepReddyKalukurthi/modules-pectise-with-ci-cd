@@ -3,13 +3,13 @@ output "subnets" {
 }
 
 output "mig1-instance-group" {
-    value = module.mig1.instance_group
+    value = module.mig1.self_link
 }
 
 output "mig2-instance-group" {
-    value = module.mig2.instance_group
+    value = module.mig2.self_link
 }
   
 output "mig3-instance-group" {
-    value = module.mig3.instance_group
+    value = module.mig3.self_link
 }
