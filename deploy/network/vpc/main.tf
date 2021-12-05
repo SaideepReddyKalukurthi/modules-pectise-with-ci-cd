@@ -19,6 +19,7 @@ module "vpc-1" {
     project_id   = var.project-name
     network_name = "${var.network-name}-001"
 
+
     subnets = [
         {
             subnet_name           = "group-01"
