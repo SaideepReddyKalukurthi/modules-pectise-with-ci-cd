@@ -1,4 +1,4 @@
-data "terraform_remote_state" "network" {
+data "terraform_remote_state" "cloud-router" {
     backend = "gcs"
     config = {
       bucket = "terraform-remote-state-data"
