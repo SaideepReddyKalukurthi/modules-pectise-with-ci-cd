@@ -15,7 +15,7 @@ module "cloud-nat-group-2" {
   source     = "../../../modules/network/cloud-nat"
   project_id = var.project-name
   region     = var.regions["group-2"]
-  router     = data.terraform_remote_state.cloud-router.outputs.router-1-name
+  router     = data.terraform_remote_state.cloud-router.outputs.router-2-name
   name       = "sai-cloud-nat-group-1"
 }
 
@@ -23,7 +23,7 @@ module "cloud-nat-group-3" {
   source     = "../../../modules/network/cloud-nat"
   project_id = var.project-name
   region     = var.regions["group-3"]
-  router     = data.terraform_remote_state.cloud-router.outputs.router-1-name
+  router     = data.terraform_remote_state.cloud-router.outputs.router-3-name
   name       = "sai-cloud-nat-group-1"
 }
 
