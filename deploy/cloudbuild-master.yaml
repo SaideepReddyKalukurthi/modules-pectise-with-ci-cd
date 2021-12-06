@@ -9,9 +9,13 @@ steps:
   args:
     - '-c'
     - |
-         MODULE_SEQUENCE=("deploy/compute/instance-template"
-                          "deploy/compute/managed-instance-group"
-                          "deploy/http-lb"
+         MODULE_SEQUENCE=("network/vpc"
+                          "network/subnets"
+                          "network/cloud-router"
+                          "network/cloud-nat"
+                          "compute/instance-template"
+                          "compute/managed-instance-group"
+                          "http-lb"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"
