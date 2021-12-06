@@ -9,16 +9,16 @@ steps:
     - '-c'
     - |
          MODULE_SEQUENCE=("deploy/network/vpc"
-                          "network/subnets"
-                          "network/cloud-router"
-                          "network/cloud-nat"
-                          "compute/instance-template"
-                          "compute/managed-instance-group"
-                          "http-lb"
+                          "deploy/network/subnets"
+                          "deploy/network/cloud-router"
+                          "deploy/network/cloud-nat"
+                          "deploy/compute/instance-template"
+                          "deploy/compute/managed-instance-group"
+                          "deploy/http-lb"
                          )
          for ((i=${#MODULE_SEQUENCE[@]}-1; i>=0; i--)); 
          do
-           gcloud builds submit . --config=cloudbuild-destroy.yaml --substitutions=_MODULE_DIR_PATH="${MODULE_SEQUENCE[i]}",_BUCKET="terraform-remote-state-data"
+           gcloud builds submit . --config=deploy/cloudbuild-destroy.yaml --substitutions=_MODULE_DIR_PATH="${MODULE_SEQUENCE[i]}",_BUCKET="terraform-remote-state-data"
          done
 
 

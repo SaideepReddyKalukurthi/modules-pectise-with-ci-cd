@@ -10,17 +10,17 @@ steps:
     - '-c'
     - |
          MODULE_SEQUENCE=("deploy/network/vpc"
-                          "network/subnets"
-                          "network/cloud-router"
-                          "network/cloud-nat"
-                          "compute/instance-template"
-                          "compute/managed-instance-group"
-                          "http-lb"
+                          "deploy/network/subnets"
+                          "deploy/network/cloud-router"
+                          "deploy/network/cloud-nat"
+                          "deploy/compute/instance-template"
+                          "deploy/compute/managed-instance-group"
+                          "deploy/http-lb"
                          )
                          
          for i in "${MODULE_SEQUENCE[@]}"
          do
-           gcloud builds submit . --config=cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH=$i,_TERRAFORM_APPLY="Y",_BUCKET="terraform-remote-state-data"
+           gcloud builds submit . --config=deploy/cloudbuild-module.yaml --substitutions=_MODULE_DIR_PATH=$i,_TERRAFORM_APPLY="Y",_BUCKET="terraform-remote-state-data"
          done
 
 
