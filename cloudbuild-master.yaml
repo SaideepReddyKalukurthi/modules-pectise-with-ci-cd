@@ -9,7 +9,7 @@ steps:
   args:
     - '-c'
     - |
-         MODULE_SEQUENCE=("network/vpc"
+         MODULE_SEQUENCE=("deploy/network/vpc"
                           "network/subnets"
                           "network/cloud-router"
                           "network/cloud-nat"
